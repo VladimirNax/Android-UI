@@ -59,7 +59,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:cardBackgroundColor="#000"
         app:cardCornerRadius="25dp"
-        android:layout_margin="10"
+        android:layout_margin="10dp"
         >
 
     <LinearLayout
