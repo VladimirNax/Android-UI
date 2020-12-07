@@ -9,18 +9,91 @@
     <LinearLayout
         android:id="@+id/body"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="100dp"
         android:layout_marginEnd="35dp"
         android:layout_marginStart="35dp"
-        android:background="#2196F3"
+        android:background="#350E3C"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_menu" />
+        app:layout_constraintTop_toBottomOf="@+id/top_menu">
+
+        <Button
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Главная" />
+        <Button
+            android:id="@+id/films"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Фильмы " />
+        <Button
+            android:id="@+id/series"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Сериалы" />
+        <Button
+            android:id="@+id/cartoons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Мультфильмы" />
+        <Button
+            android:id="@+id/news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Новинки " />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/top_menu"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#222222"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/_08b520c55e3c9760f77a06110d6a73b_c27382ee_3919_461a_844d_03093fbdb8f7" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/b4a0e6a811db22d64f5abd9c10661717_480x_progressive_3a39d700_4526_432d_bdff_6a4f9adc66ca" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/_207cfafe175137bed7bd9d96ea2264a" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/e9d0df80d465962cac9d802f050f10dd_3fcf490b_744f_4a4c_9727_02da5bf6be64" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/_24607fa629851bc686d925ab8a63e70" />
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/bottom_menu"
@@ -32,13 +105,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-    <FrameLayout
-        android:id="@+id/top_menu"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#F44336"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
