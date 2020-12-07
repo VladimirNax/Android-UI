@@ -14,7 +14,8 @@
         android:layout_marginBottom="100dp"
         android:layout_marginEnd="35dp"
         android:layout_marginStart="35dp"
-        android:background="#350E3C"
+        android:background="@drawable/container_back"
+        android:padding="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,6 +96,20 @@
             app:srcCompat="@drawable/_24607fa629851bc686d925ab8a63e70" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:text="Картинки взяты с pexels.com"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/body"
+        app:layout_constraintEnd_toEndOf="@+id/top_menu"
+        app:layout_constraintStart_toStartOf="@+id/top_menu"
+        app:layout_constraintTop_toBottomOf="@+id/top_menu"
+        app:layout_constraintVertical_bias="0.1" />
+
     <FrameLayout
         android:id="@+id/bottom_menu"
         android:layout_width="match_parent"
@@ -104,7 +119,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
