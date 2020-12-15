@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <!--<LinearLayout
         android:id="@+id/body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,19 +62,37 @@
             android:text="@string/btn_news"
             android:textColor="@android:color/white"
             android:background="?selectableItemBackgroundBorderless"/>
-    </LinearLayout>
+    </LinearLayout>-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/toolbar"
+            app:navigationIcon="@drawable/ic_baseline_menu_24"
+            app:title="@string/page_title" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/top_menu"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_margin="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="5dp"
         android:elevation="5dp"
         app:cardBackgroundColor="#000"
         app:cardCornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/app_bar_layout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,20 +144,29 @@
         android:linksClickable="true"
         android:text="Картинки взяты с pexels.com"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/body"
         app:layout_constraintEnd_toEndOf="@+id/top_menu"
         app:layout_constraintStart_toStartOf="@+id/top_menu"
         app:layout_constraintTop_toBottomOf="@+id/top_menu"
         app:layout_constraintVertical_bias="0.1" />
 
-    <FrameLayout
+    <!--<FrameLayout
         android:id="@+id/bottom_menu"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="#009688"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_700"
+        app:itemTextColor="@android:color/white"
+        app:itemIconTint="@android:color/white"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

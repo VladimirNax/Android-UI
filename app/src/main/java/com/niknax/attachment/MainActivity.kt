@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        main.setOnClickListener {
+        /*main.setOnClickListener {
             Toast.makeText(this, R.string.btn_main, Toast.LENGTH_SHORT).show()
         }
         films.setOnClickListener {
@@ -24,6 +24,6 @@ class MainActivity : AppCompatActivity() {
         }
         news.setOnClickListener {
             Toast.makeText(this, R.string.btn_news, Toast.LENGTH_SHORT).show()
-        }
+        }*/
     }
 }

@@ -1,9 +1,16 @@
 <resources>
     <string name="app_name">Attachment</string>
+    <string name="page_title">Фильмы</string>
 
     <string name="btn_main">Главная</string>
     <string name="btn_films">Фильмы</string>
     <string name="btn_series">Сериалы</string>
     <string name="btn_cartoons">Мультфильмы</string>
     <string name="btn_news">Новинки</string>
+
+    <string name="menu_settings_title">Menu</string>
+    <string name="menu_favorites_title">Избранное</string>
+    <string name="menu_watch_later_title">Посмотреть позже</string>
+    <string name="menu_selections_title">Подборки</string>
+
 </resources>
