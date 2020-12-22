@@ -170,7 +170,8 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/link">
+        app:layout_constraintTop_toBottomOf="@+id/link"
+        android:layoutAnimation="@anim/layout_animation">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/poster_1"
