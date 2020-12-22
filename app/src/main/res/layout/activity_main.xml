@@ -180,7 +180,7 @@
             app:cardCornerRadius="15dp"
 
             android:clickable="true"
-            android:stateListAnimator="@animator/button_amin"
+            android:stateListAnimator="@animator/button_coup"
             >
             <ImageView
                 android:layout_width="match_parent"
@@ -195,7 +195,7 @@
             app:cardCornerRadius="15dp"
 
             android:clickable="true"
-            android:stateListAnimator="@animator/button_amin"
+            android:stateListAnimator="@animator/button__flip"
             >
             <ImageView
                 android:layout_width="match_parent"

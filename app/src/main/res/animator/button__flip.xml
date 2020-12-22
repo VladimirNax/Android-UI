@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <!--Кнопка нажата-->
+        <set>
+            <objectAnimator
+                android:duration="200"
+                android:interpolator="@android:interpolator/accelerate_decelerate"
+                android:propertyName="rotationY"
+                android:valueFrom="0"
+                android:valueTo="-180"/>
+
+        </set>
+    </item>
+
+    <item android:state_pressed="false">
+        <!--Кнопка отпущена-->
+        <set>
+            <objectAnimator
+                android:duration="200"
+                android:interpolator="@android:interpolator/accelerate_decelerate"
+                android:propertyName="rotationY"
+                android:valueFrom="0"
+                android:valueTo="-180"/>
+
+        </set>
+    </item>
+
+</selector>
