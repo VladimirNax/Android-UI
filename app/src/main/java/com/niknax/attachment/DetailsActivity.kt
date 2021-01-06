@@ -11,13 +11,16 @@ class DetailsActivity : AppCompatActivity() {
 
         //Получаем наш фильм из переданного бандла
         val film = intent.extras?.get("film") as Film
+        bind(film)
 
+    }
+
+    fun bind(film: Film) {
         //Устанавливаем заголовок
         details_toolbar.title = film.title
-//Устанавливаем картинку
+        //Устанавливаем картинку
         details_poster.setImageResource(film.poster)
-//Устанавливаем описание
+        //Устанавливаем описание
         details_description.text = film.description
-
     }
 }
