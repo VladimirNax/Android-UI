@@ -6,63 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--<LinearLayout
-        android:id="@+id/body"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/container_back"
-        android:orientation="vertical"
-        android:padding="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_menu">
 
-        <Button
-            android:id="@+id/main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_main"
-            android:textColor="@android:color/white"
-            android:background="?selectableItemBackgroundBorderless"/>
-
-        <Button
-            android:id="@+id/films"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_films"
-            android:textColor="@android:color/white"
-            android:background="?selectableItemBackgroundBorderless"/>
-
-        <Button
-            android:id="@+id/series"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_series"
-            android:textColor="@android:color/white"
-            android:background="?selectableItemBackgroundBorderless"/>
-
-        <Button
-            android:id="@+id/cartoons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_cartoons"
-            android:textColor="@android:color/white"
-            android:background="?selectableItemBackgroundBorderless"/>
-
-        <Button
-            android:id="@+id/news"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_news"
-            android:textColor="@android:color/white"
-            android:background="?selectableItemBackgroundBorderless"/>
-    </LinearLayout>-->
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -138,7 +82,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/link"
+        android:id="@+id/disclaimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autoLink="web"
@@ -150,90 +94,17 @@
         app:layout_constraintTop_toBottomOf="@+id/top_menu"
         app:layout_constraintVertical_bias="0.1" />
 
-    <!--<FrameLayout
-        android:id="@+id/bottom_menu"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#009688"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />-->
 
-
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_recycler"
+        tools:listitem="@layout/film_item"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_margin="16dp"
-        android:columnCount="2"
-        android:orientation="horizontal"
-        android:useDefaultMargins="true"
+        app:layout_constraintTop_toBottomOf="@+id/disclaimer"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/link"
-        android:layoutAnimation="@anim/layout_animation">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/poster_1"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            app:cardCornerRadius="15dp"
-
-            android:clickable="true"
-            android:stateListAnimator="@animator/button_coup"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/im_1_ter"
-                android:scaleType="centerCrop"/>
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/poster_2"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            app:cardCornerRadius="15dp"
-
-            android:clickable="true"
-            android:stateListAnimator="@animator/button__flip"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/im_2_ev"
-                android:scaleType="centerCrop"/>
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/poster_3"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            app:cardCornerRadius="15dp"
-
-            android:clickable="true"
-            android:stateListAnimator="@animator/button_amin"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/im_3_n"
-                android:scaleType="centerCrop"/>
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/poster_4"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            app:cardCornerRadius="15dp"
-
-            android:clickable="true"
-            android:stateListAnimator="@animator/button_amin"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/im_4_sp"
-                android:scaleType="centerCrop"/>
-        </androidx.cardview.widget.CardView>
-    </GridLayout>
+        app:layout_constraintRight_toRightOf="parent"/>
 
 
 
