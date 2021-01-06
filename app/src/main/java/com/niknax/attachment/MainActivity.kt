@@ -1,5 +1,6 @@
 package com.niknax.attachment
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -75,9 +76,21 @@ class MainActivity : AppCompatActivity() {
 //находим наш RV
         main_recycler.apply {
             //Инициализируем наш адаптер в конструктор передаем анонимно инициализированный интерфейс,
-            //оставим его пока пустым, он нам понадобится во второй части задания
+//открытие нового экрана по клику
             filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
-                override fun click(film: Film, position: Int) {}
+                override fun click(film: Film) {
+                    //Создаем бандл и кладем туда объект с данными фильма
+                    val bundle = Bundle()
+                    //Первым параметром указывается ключ, по которому потом будем искать, вторым сам
+                    //передаваемый объект
+                    bundle.putParcelable("film", film)
+                    //Запускаем наше активити
+                    val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+                    //Прикрепляем бандл к интенту
+                    intent.putExtras(bundle)
+                    //Запускаем активити через интент
+                    startActivity(intent)
+                }
             })
             //Присваиваем адаптер
             adapter = filmsAdapter
@@ -89,7 +102,6 @@ class MainActivity : AppCompatActivity() {
         }
 //Кладем нашу БД в RV
         filmsAdapter.addItems(filmsDataBase)
-
 
 
     }
