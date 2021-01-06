@@ -34,7 +34,7 @@
         android:layout_marginEnd="5dp"
         android:elevation="5dp"
         app:cardBackgroundColor="#000"
-        app:cardCornerRadius="25dp"
+        app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/app_bar_layout">
