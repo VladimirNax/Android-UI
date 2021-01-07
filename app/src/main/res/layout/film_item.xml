@@ -7,11 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:elevation="1dp"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    android:stateListAnimator="@animator/button_amin"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <ImageView
             android:id="@+id/poster"
