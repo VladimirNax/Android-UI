@@ -3,8 +3,10 @@ package com.niknax.attachment
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -71,6 +73,16 @@ class MainActivity : AppCompatActivity() {
             Film(" Гламурные боссы", R.drawable.p9, "Two friends with very different ideals start a beauty company together. One is more practical while the other wants to earn her fortune and live a lavish lifestyle."),
             Film(" Ритм-секция", R.drawable.p10, "A woman seeks revenge against those who orchestrated a plane crash that killed her family."),
         )
+
+// Анимация появления списка фильмов
+        val recyclerView = findViewById <RecyclerView> (R.id.main_recycler)
+        //Загружаем анимацию, созданную в XML формате
+        val anim = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation)
+        //Передаем ее в recyclerView
+        recyclerView.layoutAnimation = anim
+        //Запускаем анимацию на выполнение
+        recyclerView.scheduleLayoutAnimation()
+
 
 
 //находим наш RV
