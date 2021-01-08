@@ -50,7 +50,7 @@
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar_menu"
                     android:layout_width="match_parent"
-                    android:background="#94000000"
+                    android:background="#A8000000"
                     android:layout_height="30dp"
                     app:menu="@menu/collapsing_toolbar"/>
 
