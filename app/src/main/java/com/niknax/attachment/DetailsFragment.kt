@@ -2,20 +2,37 @@ package com.niknax.attachment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.activity_details.view.*
+import kotlinx.android.synthetic.main.fragment_details.*
+import kotlinx.android.synthetic.main.fragment_details.view.*
 
 import kotlinx.android.synthetic.main.activity_main.*
 
-class DetailsActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class DetailsFragment : Fragment() {
+
+    /*override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
+        //setContentView(R.layout.fragment_details)
+
+    }*/
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_details, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         //Получаем наш фильм из переданного бандла
-        val film = intent.extras?.get("film") as Film
+        val film = arguments?.get("film") as Film
         bind(film)
 
 //нажатие на кнопки меню. сообщение Snackbar
@@ -34,12 +51,11 @@ class DetailsActivity : AppCompatActivity() {
         }
 // Тост при  клике на иконку details_fab
         details_fab.setOnClickListener {
-            Toast.makeText(this, "details_fab", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "details_fab", Toast.LENGTH_SHORT).show()
         }
 
 
     }
-
     fun bind(film: Film) {
         //Устанавливаем заголовок
         details_toolbar.title = film.title

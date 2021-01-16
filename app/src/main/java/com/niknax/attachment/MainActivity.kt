@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var filmsAdapter: FilmListRecyclerAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,61 +60,34 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // список фильмов на главной
-        val filmsDataBase = listOf(
-            Film("Декстер", R.drawable.p1, "By day, mild-mannered Dexter is a blood-spatter analyst for the Miami police. But at night, he is a serial killer who only targets other murderers."),
-            Film("Пропавшая", R.drawable.p2, "A recently widowed traveler is kidnapped by a cold blooded killer, only to escape into the wilderness where she is forced to battle against the elements as her pursuer closes in on her."),
-            Film(" Город воров", R.drawable.p3, "A longtime thief, planning his next job, tries to balance his feelings for a bank manager connected to an earlier heist, and a hell-bent F.B.I Agent looking to bring him and his crew down."),
-            Film("One Night in Miami", R.drawable.p4, "One Night in Miami is a fictional account of one incredible night where icons Muhammad Ali, Malcolm X, Sam Cooke, and Jim Brown gathered discussing their roles in the civil rights movement and cultural upheaval of the 60s."),
-            Film("Последний из могикан", R.drawable.p5, "Three trappers protect the daughters of a British Colonel in the midst of the French and Indian War."),
-            Film("Стартрек: Бесконечность", R.drawable.p6, "The crew of the USS Enterprise explores the furthest reaches of uncharted space, where they encounter a new ruthless enemy, who puts them, and everything the Federation stands for, to the test."),
-            Film(" Шоу Трумана", R.drawable.p7, "An insurance salesman discovers his whole life is actually a reality TV show."),
-            Film(" Любите Куперов", R.drawable.p8, "The intertwined stories of four generations of Coopers unfold right before the annual family reunion on Christmas Eve. Can they survive the most beautiful time of the year?"),
-            Film(" Гламурные боссы", R.drawable.p9, "Two friends with very different ideals start a beauty company together. One is more practical while the other wants to earn her fortune and live a lavish lifestyle."),
-            Film(" Ритм-секция", R.drawable.p10, "A woman seeks revenge against those who orchestrated a plane crash that killed her family."),
-        )
-
-// Анимация появления списка фильмов
-        val recyclerView = findViewById <RecyclerView> (R.id.main_recycler)
-        //Загружаем анимацию, созданную в XML формате
-        val anim = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation)
-        //Передаем ее в recyclerView
-        recyclerView.layoutAnimation = anim
-        //Запускаем анимацию на выполнение
-        recyclerView.scheduleLayoutAnimation()
-
-
-
-//находим наш RV
-        main_recycler.apply {
-            //Инициализируем наш адаптер в конструктор передаем анонимно инициализированный интерфейс,
-//открытие нового экрана по клику
-            filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
-                override fun click(film: Film) {
-                    //Создаем бандл и кладем туда объект с данными фильма
-                    val bundle = Bundle()
-                    //Первым параметром указывается ключ, по которому потом будем искать, вторым сам
-                    //передаваемый объект
-                    bundle.putParcelable("film", film)
-                    //Запускаем наше активити
-                    val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-                    //Прикрепляем бандл к интенту
-                    intent.putExtras(bundle)
-                    //Запускаем активити через интент
-                    startActivity(intent)
-                }
-            })
-            //Присваиваем адаптер
-            adapter = filmsAdapter
-            //Присвои layoutmanager
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            //Применяем декоратор для отступов
-            val decorator = TopSpacingItemDecoration(8)
-            addItemDecoration(decorator)
-        }
-//Кладем нашу БД в RV
-        filmsAdapter.addItems(filmsDataBase)
-
+//Запускаем фрагмент при старте
+        val tag = "fragment_1"
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragment_placeholder, HomeFragment(), tag)
+            .addToBackStack(null)
+            .commit()
 
     }
+
+    fun launchDetailsFragment(film: Film) {
+        //Создаем "посылку"
+        val bundle = Bundle()
+        //Кладем наш фильм в "посылку"
+        bundle.putParcelable("film", film)
+        //Кладем фрагмент с деталями в перменную
+        val fragment = DetailsFragment()
+        //Прикрепляем нашу "посылку" к фрагменту
+        fragment.arguments = bundle
+
+        //Запускаем фрагмент
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_placeholder, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+
+
 }

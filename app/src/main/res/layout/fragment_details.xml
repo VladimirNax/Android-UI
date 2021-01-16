@@ -1,16 +1,17 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/details_layout"
-    tools:context=".DetailsActivity">
+    tools:context=".DetailsFragment">
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        >
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
@@ -47,7 +48,7 @@
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
 
-                <com.google.android.material.appbar.MaterialToolbar
+               <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar_menu"
                     android:layout_width="match_parent"
                     android:background="#A8000000"
