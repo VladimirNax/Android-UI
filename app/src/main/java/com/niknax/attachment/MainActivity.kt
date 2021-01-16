@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-
+    private var backPressed = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,6 +88,22 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-
+    //выход из приложения двойным кликом с учетом возвратов по фрагментам
+    override fun onBackPressed() {
+        if(supportFragmentManager.backStackEntryCount == 1) {
+            if (backPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+                super.onBackPressed()
+                finish()
+            } else {
+                Toast.makeText(this, "Для выхода кликните дважды", Toast.LENGTH_SHORT).show()
+            }
+            backPressed = System.currentTimeMillis()
+        } else {
+            super.onBackPressed()
+        }
+    }
+    companion object {
+        const val TIME_INTERVAL = 2000
+    }
 
 }
