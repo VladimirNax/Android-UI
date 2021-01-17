@@ -1,8 +1,10 @@
 package com.niknax.attachment
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -89,14 +91,36 @@ class MainActivity : AppCompatActivity() {
     }
 
     //выход из приложения двойным кликом с учетом возвратов по фрагментам
+    //или попап окно
     override fun onBackPressed() {
         if(supportFragmentManager.backStackEntryCount == 1) {
-            if (backPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+            //выход двойным кликом
+            /*if (backPressed + TIME_INTERVAL > System.currentTimeMillis()) {
                 super.onBackPressed()
                 finish()
             } else {
                 Toast.makeText(this, "Для выхода кликните дважды", Toast.LENGTH_SHORT).show()
-            }
+            }*/
+
+            // выводит Диалоговое окно. Popup
+            // ContextThemeWrapper(this, R.style.MyDialog) - задает стиль окна. стиль в values\themes.xml.
+            // без стилий AlertDialog.Builder(this)
+            AlertDialog.Builder(ContextThemeWrapper(this, R.style.MyDialog))
+                .setTitle("Вы хотите выйти?")
+                .setIcon(R.drawable.ic_baseline_sensor_door_24)
+                .setMessage ("«Нам бы не хотелось бы, чтобы вы уходили»")
+                .setPositiveButton("Да") { _, _ ->
+                    super.onBackPressed()
+                    finish()
+                }
+                .setNegativeButton("Нет") { _, _ ->
+
+                }
+                .setNeutralButton("Не знаю") { _, _ ->
+                    Toast.makeText(this, "Решайся", Toast.LENGTH_SHORT).show()
+                }
+                .show()
+
             backPressed = System.currentTimeMillis()
         } else {
             super.onBackPressed()

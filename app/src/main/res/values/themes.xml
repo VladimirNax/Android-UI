@@ -15,4 +15,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="MyDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:background">@color/purple_700</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>
