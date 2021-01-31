@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.btn_news, Toast.LENGTH_SHORT).show()
         }*/
 
-        topAppBar.setOnMenuItemClickListener {
+        /* topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.settings -> {
                     Toast.makeText(this, "Настройки", Toast.LENGTH_SHORT).show()
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> false
             }
-        }
+        } */
         bottom_navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.favorites -> {
