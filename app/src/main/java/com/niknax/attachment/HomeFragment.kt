@@ -62,6 +62,13 @@ class HomeFragment : Fragment() {
 //Кладем нашу БД в RV
         filmsAdapter.addItems(filmsDataBase)
 
+
+//активация поля поиск по клику по нему, а не по иконке лупа
+        search_view.setOnClickListener {
+            search_view.isIconified = false
+        }
+
+
     }
 
 }
