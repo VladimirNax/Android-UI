@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
 class FavoritesFragment : Fragment() {
@@ -22,6 +23,8 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         //Получаем список при транзакции фрагмента
         val favoritesList: List<Film> = emptyList()
 
@@ -40,8 +43,23 @@ class FavoritesFragment : Fragment() {
                 //Применяем декоратор для отступов
                 val decorator = TopSpacingItemDecoration(8)
                 addItemDecoration(decorator)
+
             }
         //Кладем нашу БД в RV
        // filmsAdapter.add - не реализована передача избранного в нашу БД
+
+
+
     }
+
+
+
+    /*fun bind(film: Film) {
+        //Устанавливаем заголовок
+        details_toolbar.title = film.title
+        //Устанавливаем картинку
+        details_poster.setImageResource(film.poster)
+        //Устанавливаем описание
+        details_description.text = film.description
+    }*/
 }
