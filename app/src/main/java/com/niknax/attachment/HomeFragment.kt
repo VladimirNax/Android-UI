@@ -2,6 +2,11 @@ package com.niknax.attachment
 
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Scene
+import android.transition.Slide
+import android.transition.TransitionManager
+import android.transition.TransitionSet
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +17,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.merge_home_screen_content.*
 import java.util.*
 
 
@@ -43,6 +49,23 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // подключение анимации для появления списка фильмов
+        val scene = Scene.getSceneForLayout(home_fragment_root, R.layout.merge_home_screen_content, requireContext())
+        //Создаем анимацию выезда поля поиска сверху
+        val searchSlide = Slide(Gravity.TOP).addTarget(R.id.search_view)
+        //Создаем анимацию выезда RV снизу
+        val recyclerSlide = Slide(Gravity.BOTTOM).addTarget(R.id.main_recycler)
+        //Создаем экземпляр TransitionSet, который объединит все наши анимации
+        val customTransition = TransitionSet().apply {
+            //Устанавливаем время, за которое будет проходить анимация
+            duration = 500
+            //Добавляем сами анимации
+            addTransition(recyclerSlide)
+            addTransition(searchSlide)
+        }
+        //Также запускаем через TransitionManager, но вторым параметром передаем нашу кастомную анимацию
+        TransitionManager.go(scene, customTransition)
 
 //активация поля поиск по клику по нему, а не по иконке лупа
         search_view.setOnClickListener {
