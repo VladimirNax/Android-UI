@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.android.synthetic.main.fragment_favorites.*
+
 
 class FavoritesFragment : Fragment() {
 
@@ -24,6 +24,7 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        AnimationHelper.performFragmentCircularRevealAnimation(favorites_fragment, requireActivity(), 1)
 
         //Получаем список при транзакции фрагмента
         val favoritesList: List<Film> = emptyList()

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Attachment</string>
     <string name="page_title">Фильмы</string>
-
+    <string name="menu_home_title_text">Главная</string>
     <string name="menu_settings_title">Menu</string>
     <string name="menu_favorites_title">Избранное</string>
     <string name="menu_watch_later_title">Посмотреть позже</string>
