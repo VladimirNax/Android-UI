@@ -154,7 +154,15 @@ class RatingDonutView @JvmOverloads constructor(context: Context, attributeSet: 
         drawText(canvas)
     }
 
-
+    // метод реализует возможность задовать рейтинг из кода. в данном случае из бд
+    fun setProgress(pr: Int) {
+        //Кладем новое значение в наше поле класса
+        progress = pr
+        //Создаем краски с новыми цветами
+        initPaint()
+        //вызываем перерисовку View
+        invalidate()
+    }
 
 
 
