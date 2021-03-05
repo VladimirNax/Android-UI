@@ -1,33 +1,25 @@
 package com.niknax.attachment
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_details.*
-import kotlinx.android.synthetic.main.fragment_details.view.*
+import com.niknax.attachment.databinding.FragmentDetailsBinding
 
-import kotlinx.android.synthetic.main.activity_main.*
 
 class DetailsFragment : Fragment() {
 
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //setContentView(R.layout.fragment_details)
-
-    }*/
+    private lateinit var binding: FragmentDetailsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_details, container, false)
+        binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,14 +30,15 @@ class DetailsFragment : Fragment() {
         bind(film)
 
 //нажатие на кнопки меню. сообщение Snackbar
-        toolbar_menu.setOnMenuItemClickListener {
+
+        binding.toolbarMenu.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.favorites_details -> {
-                    Snackbar.make(details_layout, "Избранное", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.detailsLayout, "Избранное", Snackbar.LENGTH_SHORT).show()
                     true
                 }
                 R.id.watch_later_details -> {
-                    Snackbar.make(details_layout, "Посмотреть позже", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.detailsLayout, "Посмотреть позже", Snackbar.LENGTH_SHORT).show()
                     true
                 }
                 else -> false
@@ -53,7 +46,7 @@ class DetailsFragment : Fragment() {
         }
 
         // Тост при  клике на иконку details_fab -Поделиться
-        details_fab.setOnClickListener {
+        binding.detailsFab.setOnClickListener {
             //Toast.makeText(requireContext(), "details_fab", Toast.LENGTH_SHORT).show()
 
             //"передаем выбранный текст фильма в другое приложение."
@@ -74,17 +67,17 @@ class DetailsFragment : Fragment() {
 
 
         //логика фильм или находится, или не находится в Избранном
-        details_fab_favorites.setImageResource(
+        binding.detailsFabFavorites.setImageResource(
             if (film.isInFavorites) R.drawable.ic_baseline_favorite_24
             else R.drawable.ic_baseline_favorite_border_24
         )
         // обработка кнопки Избранное.
-        details_fab_favorites.setOnClickListener {
+        binding.detailsFabFavorites.setOnClickListener {
             if (!film.isInFavorites) {
-                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_24)
+                binding.detailsFabFavorites.setImageResource(R.drawable.ic_baseline_favorite_24)
                 film.isInFavorites = true
             } else {
-                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                binding.detailsFabFavorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 film.isInFavorites = false
             }
         }
@@ -95,10 +88,10 @@ class DetailsFragment : Fragment() {
 
     fun bind(film: Film) {
         //Устанавливаем заголовок
-        details_toolbar.title = film.title
+        binding.detailsToolbar.title = film.title
         //Устанавливаем картинку
-        details_poster.setImageResource(film.poster)
+        binding.detailsPoster.setImageResource(film.poster)
         //Устанавливаем описание
-        details_description.text = film.description
+        binding.detailsDescription.text = film.description
     }
 }
