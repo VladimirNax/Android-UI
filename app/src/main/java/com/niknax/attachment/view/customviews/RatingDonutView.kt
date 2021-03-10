@@ -1,4 +1,4 @@
-package com.niknax.attachment.CustomView
+package com.niknax.attachment.view.customviews
 
 import android.content.Context
 import android.graphics.*

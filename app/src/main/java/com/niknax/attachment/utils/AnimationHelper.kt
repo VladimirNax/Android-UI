@@ -1,4 +1,4 @@
-package com.niknax.attachment
+package com.niknax.attachment.utils
 
 import android.app.Activity
 import android.view.View

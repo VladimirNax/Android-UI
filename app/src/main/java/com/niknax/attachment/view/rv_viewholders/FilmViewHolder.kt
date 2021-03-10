@@ -1,8 +1,9 @@
-package com.niknax.attachment
+package com.niknax.attachment.view.rv_viewholders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.niknax.attachment.domain.Film
 import kotlinx.android.synthetic.main.film_item.view.*
 
 //В конструктор класс передается layout, который мы создали(film_item.xml)

@@ -1,4 +1,4 @@
-package com.niknax.attachment
+package com.niknax.attachment.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.niknax.attachment.view.rv_adapters.FilmListRecyclerAdapter
+import com.niknax.attachment.view.MainActivity
+import com.niknax.attachment.view.rv_adapters.TopSpacingItemDecoration
 import com.niknax.attachment.databinding.FragmentFavoritesBinding
+import com.niknax.attachment.domain.Film
+import com.niknax.attachment.utils.AnimationHelper
+
 //import kotlinx.android.synthetic.main.fragment_favorites.*
 
 

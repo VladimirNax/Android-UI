@@ -1,4 +1,4 @@
-package com.niknax.attachment
+package com.niknax.attachment.view
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -6,7 +6,11 @@ import android.view.ContextThemeWrapper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.niknax.attachment.R
 import com.niknax.attachment.databinding.ActivityMainBinding
+import com.niknax.attachment.domain.Film
+import com.niknax.attachment.view.fragments.*
+
 //import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

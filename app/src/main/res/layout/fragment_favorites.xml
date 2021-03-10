@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:visibility="invisible"
     android:background="@drawable/background_favorites"
-    tools:context=".FavoritesFragment"
+    tools:context=".view.fragments.FavoritesFragment"
     tools:visibility="visible">
 
     <androidx.recyclerview.widget.RecyclerView

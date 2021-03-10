@@ -1,4 +1,4 @@
-package com.niknax.attachment
+package com.niknax.attachment.view.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import com.niknax.attachment.R
 import com.niknax.attachment.databinding.FragmentDetailsBinding
+import com.niknax.attachment.domain.Film
 
 
 class DetailsFragment : Fragment() {

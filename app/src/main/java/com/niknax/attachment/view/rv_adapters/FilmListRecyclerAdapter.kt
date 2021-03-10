@@ -1,8 +1,11 @@
-package com.niknax.attachment
+package com.niknax.attachment.view.rv_adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.niknax.attachment.view.rv_viewholders.FilmViewHolder
+import com.niknax.attachment.R
+import com.niknax.attachment.domain.Film
 import kotlinx.android.synthetic.main.film_item.view.*
 
 //в параметр передаем слушатель, чтобы мы потом могли обрабатывать нажатия из класса Activity
@@ -52,6 +55,6 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
 
     //Интерфейс для обработки кликов
     interface OnItemClickListener {
-        fun click(film: Film )
+        fun click(film: Film)
     }
 }

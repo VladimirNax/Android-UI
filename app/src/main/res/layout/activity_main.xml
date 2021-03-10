@@ -7,7 +7,7 @@
     android:id="@+id/main"
 
 
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
 
 <!--

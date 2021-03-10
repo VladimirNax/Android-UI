@@ -1,4 +1,4 @@
-package com.niknax.attachment
+package com.niknax.attachment.view.rv_adapters
 
 import android.content.res.Resources
 import android.graphics.Rect

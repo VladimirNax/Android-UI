@@ -1,4 +1,4 @@
-package com.niknax.attachment
+package com.niknax.attachment.domain
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
