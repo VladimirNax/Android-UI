@@ -4,7 +4,7 @@ import com.niknax.attachment.R
 import com.niknax.attachment.domain.Film
 
 class MainRepository {
-    val filmsDataBase = listOf(
+    /*val filmsDataBase = listOf(
         Film("Декстер",
             R.drawable.p1, "By day, mild-mannered Dexter is a blood-spatter analyst for the Miami police. But at night, he is a serial killer who only targets other murderers.", 7.1f),
         Film("Пропавшая",
@@ -25,5 +25,5 @@ class MainRepository {
             R.drawable.p9, "Two friends with very different ideals start a beauty company together. One is more practical while the other wants to earn her fortune and live a lavish lifestyle.", 8.1f),
         Film(" Ритм-секция",
             R.drawable.p10, "A woman seeks revenge against those who orchestrated a plane crash that killed her family.", 9.7f),
-    )
+    )*/
 }

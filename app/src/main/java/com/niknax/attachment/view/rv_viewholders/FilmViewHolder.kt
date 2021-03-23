@@ -3,6 +3,7 @@ package com.niknax.attachment.view.rv_viewholders
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.niknax.attachment.data.ApiConstants
 import com.niknax.attachment.domain.Film
 import kotlinx.android.synthetic.main.film_item.view.*
 
@@ -25,7 +26,7 @@ class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //Указываем контейнер, в котором будет "жить" наша картинка
         Glide.with(itemView)
             //Загружаем сам ресурс
-            .load(film.poster)
+            .load(ApiConstants.IMAGES_URL + "w342" + film.poster)
             //Центруем изображение
             .centerCrop()
             //Указываем ImageView, куда будем загружать изображение
