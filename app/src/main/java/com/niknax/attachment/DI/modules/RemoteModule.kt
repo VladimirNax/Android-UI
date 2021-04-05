@@ -1,4 +1,4 @@
-package com.niknax.attachment.DI
+package com.niknax.attachment.DI.modules
 
 import com.niknax.attachment.BuildConfig
 import com.niknax.attachment.data.ApiConstants
