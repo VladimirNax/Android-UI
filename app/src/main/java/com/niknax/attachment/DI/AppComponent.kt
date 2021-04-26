@@ -4,6 +4,7 @@ import com.niknax.attachment.DI.modules.DatabaseModule
 import com.niknax.attachment.DI.modules.DomainModule
 import com.niknax.attachment.DI.modules.RemoteModule
 import com.niknax.attachment.viewmodel.HomeFragmentViewModel
+import com.niknax.attachment.viewmodel.SettingsFragmentViewModel
 import dagger.Component
 import javax.inject.Singleton
 
