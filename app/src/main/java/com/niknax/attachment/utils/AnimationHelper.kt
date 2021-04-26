@@ -10,7 +10,7 @@ import kotlin.math.roundToInt
 
 object AnimationHelper {
     //Это переменная для того, чтобы круг проявления расходился именно от иконки меню навигации
-    private const val menuItems = 4
+    private const val menuItems = 5
     //В метод у нас приходит 3 параметра:
     //1 - наше rootView, которое одновременно является и контейнером
     //и объектом анимации
