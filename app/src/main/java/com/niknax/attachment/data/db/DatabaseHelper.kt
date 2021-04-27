@@ -9,11 +9,11 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         //Создаем саму таблицу для фильмов
         db?.execSQL(
             "CREATE TABLE $TABLE_NAME (" +
-                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "$COLUMN_TITLE TEXT UNIQUE," +
-                    "$COLUMN_POSTER TEXT," +
-                    "$COLUMN_DESCRIPTION TEXT," +
-                    "$COLUMN_RATING REAL);"
+                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT," +   //
+                    "$COLUMN_TITLE TEXT UNIQUE," + // столбец название фильма, он также помечен как уникальный, чтобы у нас не было двух одинаковых фильмов в таблице, и их не нужно было бы потом фильтровать.
+                    "$COLUMN_POSTER TEXT," +  // столбец для ссылки на постер.
+                    "$COLUMN_DESCRIPTION TEXT," +  //  столбец для хранения описания.
+                    "$COLUMN_RATING REAL);"  // столбец для рейтинга. Как помните, рейтинг у нас в Double, поэтому мы создаем столбец с типом REAL.
         )
     }
     //Миграций мы не предполагаем, поэтому метод пустой
