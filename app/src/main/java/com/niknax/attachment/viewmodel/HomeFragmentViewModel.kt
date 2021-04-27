@@ -26,7 +26,10 @@ class HomeFragmentViewModel : ViewModel() {
                 filmsListLiveData.postValue(films)
             }
 
+            //Метод вызывается, когда, например, возникают проблемы с Сетью.
             override fun onFailure() {
+                //тут будем класть фильмы из БД в LiveData, чтобы на UI у нас появился список фильмов.
+                filmsListLiveData.postValue(interactor.getFilmsFromDB())
             }
         })
     }
