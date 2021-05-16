@@ -10,7 +10,7 @@ import com.niknax.attachment.view.rv_adapters.FilmListRecyclerAdapter
 import com.niknax.attachment.view.MainActivity
 import com.niknax.attachment.view.rv_adapters.TopSpacingItemDecoration
 import com.niknax.attachment.databinding.FragmentFavoritesBinding
-import com.niknax.attachment.domain.Film
+import com.niknax.attachment.data.Entity.Film
 import com.niknax.attachment.utils.AnimationHelper
 
 //import kotlinx.android.synthetic.main.fragment_favorites.*

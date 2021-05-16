@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.niknax.attachment.R
 import com.niknax.attachment.databinding.ActivityMainBinding
-import com.niknax.attachment.domain.Film
+import com.niknax.attachment.data.Entity.Film
 import com.niknax.attachment.view.fragments.*
 
 //import kotlinx.android.synthetic.main.activity_main.*

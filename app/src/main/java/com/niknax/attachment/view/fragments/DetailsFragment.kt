@@ -11,7 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.niknax.attachment.data.ApiConstants
 import com.niknax.attachment.R
 import com.niknax.attachment.databinding.FragmentDetailsBinding
-import com.niknax.attachment.domain.Film
+import com.niknax.attachment.data.Entity.Film
 
 
 class DetailsFragment : Fragment() {

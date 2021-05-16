@@ -9,8 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.niknax.attachment.domain.Film
-import com.niknax.attachment.R
+import com.niknax.attachment.data.Entity.Film
 import com.niknax.attachment.view.rv_adapters.TopSpacingItemDecoration
 import com.niknax.attachment.databinding.FragmentHomeBinding
 import com.niknax.attachment.utils.AnimationHelper

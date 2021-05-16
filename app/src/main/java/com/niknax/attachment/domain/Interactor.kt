@@ -1,6 +1,7 @@
 package com.niknax.attachment.domain
 
 import com.niknax.attachment.API
+import com.niknax.attachment.data.Entity.Film
 import com.niknax.attachment.data.TmdbApi
 import com.niknax.attachment.data.Entity.TmdbResultsDto
 import com.niknax.attachment.data.MainRepository
@@ -25,7 +26,7 @@ class Interactor(
                     val list = Converter.convertApiListToDtoList(response.body()?.tmdbFilms)
                     //Кладем фильмы в бд
                     list.forEach {
-                        repo.putToDb(film = it)
+                        repo.putToDb(list)
                     }
                     callback.onSuccess(list)
                 }
