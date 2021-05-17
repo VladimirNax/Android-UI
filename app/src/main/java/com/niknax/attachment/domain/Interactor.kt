@@ -1,5 +1,6 @@
 package com.niknax.attachment.domain
 
+import androidx.lifecycle.LiveData
 import com.niknax.attachment.API
 import com.niknax.attachment.data.Entity.Film
 import com.niknax.attachment.data.TmdbApi
@@ -25,10 +26,8 @@ class Interactor(
                     //При успехе мы вызываем метод, передаем onSuccess и в этот коллбэк список фильмов
                     val list = Converter.convertApiListToDtoList(response.body()?.tmdbFilms)
                     //Кладем фильмы в бд
-                    list.forEach {
-                        repo.putToDb(list)
-                    }
-                    callback.onSuccess(list)
+                    repo.putToDb(list)
+                    callback.onSuccess()
                 }
 
                 override fun onFailure(call: Call<TmdbResultsDto>, t: Throwable) {
@@ -47,5 +46,5 @@ class Interactor(
     fun getDefaultCategoryFromPreferences() = preferences.geDefaultCategory()
 
     //Метод дергает метод репозитория MainRepository , чтобы тот забрал фильмы из БД
-    fun getFilmsFromDB(): List<Film> = repo.getAllFromDB()
+    fun getFilmsFromDB(): LiveData<List<Film>> = repo.getAllFromDB()
 }
