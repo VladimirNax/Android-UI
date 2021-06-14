@@ -18,15 +18,19 @@ import com.niknax.attachment.view.MainActivity
 import com.niknax.attachment.view.rv_adapters.FilmListRecyclerAdapter
 import com.niknax.attachment.viewmodel.HomeFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 import java.util.*
 
 class HomeFragment : Fragment() {
     private val viewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
     }
+    private lateinit var scope: CoroutineScope
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
     private lateinit var binding: FragmentHomeBinding
     private var filmsDataBase = listOf<Film>()
+
         //Используем backing field
         set(value) {
             //Если придет такое же значение то мы выходим из метода
@@ -61,13 +65,30 @@ class HomeFragment : Fragment() {
         //находим наш RV
         initRecyckler()
         //Кладем нашу БД в RV
-        viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
+        /*viewModel.filmsListData.observe(viewLifecycleOwner, Observer<List<Film>> {
             filmsDataBase = it
             filmsAdapter.addItems(it)
-        })
-        viewModel.showProgressBar.observe(viewLifecycleOwner, Observer<Boolean> {
-            binding.progressBar.isVisible = it
-        })
+        })*/
+
+        scope = CoroutineScope(Dispatchers.IO).also { scope ->
+            scope.launch {
+                viewModel.filmsListData.collect {
+                    withContext(Dispatchers.Main) {
+                        filmsAdapter.addItems(it)
+                        filmsDataBase = it
+                    }
+                }
+            }
+        }
+
+        scope.launch {
+            for (element in viewModel.showProgressBar) {
+                launch(Dispatchers.Main) {
+                    binding.progressBar.isVisible = element
+                }
+            }
+        }
+
     }
 
     private fun initSearchView() {
@@ -130,6 +151,11 @@ class HomeFragment : Fragment() {
             //Убираем крутящееся колечко
             binding.pullToRefresh.isRefreshing = false
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        scope.cancel()
     }
 
 }
