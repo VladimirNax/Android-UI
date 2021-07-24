@@ -50,6 +50,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    implementation 'androidx.fragment:fragment-ktx:1.2.5'
+
     //MaterialDesign
     implementation 'com.google.android.material:material:1.2.1'
 
@@ -78,6 +80,10 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-rxjava3:2.3.0-beta02"
     kapt "androidx.room:room-compiler:$room_version"
+
+    //Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
 
 //RxJava
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'

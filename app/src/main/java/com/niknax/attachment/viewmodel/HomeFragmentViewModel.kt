@@ -6,8 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.niknax.attachment.App
 import com.niknax.attachment.data.Entity.Film
 import com.niknax.attachment.domain.Interactor
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.subjects.BehaviorSubject
+
 
 import java.util.concurrent.Executors
 import javax.inject.Inject
@@ -15,12 +16,12 @@ import javax.inject.Inject
 
 class HomeFragmentViewModel : ViewModel() {
 
-    val showProgressBar: Channel<Boolean>
+    val showProgressBar: BehaviorSubject<Boolean>
 
     //Инициализируем интерактор
     @Inject
     lateinit var interactor: Interactor
-    val filmsListData: Flow<List<Film>>
+    val filmsListData: Observable<List<Film>>
 
 
     init {

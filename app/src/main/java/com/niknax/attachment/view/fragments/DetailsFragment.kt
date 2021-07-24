@@ -16,7 +16,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.niknax.attachment.data.ApiConstants
@@ -25,6 +24,7 @@ import com.niknax.attachment.databinding.FragmentDetailsBinding
 import com.niknax.attachment.data.Entity.Film
 import com.niknax.attachment.viewmodel.DetailsFragmentViewModel
 import kotlinx.coroutines.*
+
 
 class DetailsFragment : Fragment() {
     private lateinit var film: Film

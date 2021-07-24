@@ -14,25 +14,28 @@ import com.niknax.attachment.data.Entity.Film
 import com.niknax.attachment.view.rv_adapters.TopSpacingItemDecoration
 import com.niknax.attachment.databinding.FragmentHomeBinding
 import com.niknax.attachment.utils.AnimationHelper
+import com.niknax.attachment.utils.AutoDisposable
+import com.niknax.attachment.utils.addTo
 import com.niknax.attachment.view.MainActivity
 import com.niknax.attachment.view.rv_adapters.FilmListRecyclerAdapter
 import com.niknax.attachment.viewmodel.HomeFragmentViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+
 import java.util.*
+
+
 
 class HomeFragment : Fragment() {
     private val viewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
     }
-    private lateinit var scope: CoroutineScope
+    private val autoDisposable = AutoDisposable()
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
     private lateinit var binding: FragmentHomeBinding
-    private var filmsDataBase = listOf<Film>()
 
-        //Используем backing field
-        set(value) {
+    private var filmsDataBase = listOf<Film>()
+        set(value) { //Используем backing field
             //Если придет такое же значение то мы выходим из метода
             if (field == value) return
             //Если прило другое значение, то кладем его в переменную
@@ -43,7 +46,9 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        autoDisposable.bindTo(lifecycle)
         retainInstance = true
+
     }
 
     override fun onCreateView(
@@ -57,7 +62,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        AnimationHelper.performFragmentCircularRevealAnimation(home_fragment_root, requireActivity(), 1)
+        AnimationHelper.performFragmentCircularRevealAnimation(binding.homeFragmentRoot, requireActivity(), 1)
 
         initSearchView()
         initPullToRefresh()
@@ -70,34 +75,32 @@ class HomeFragment : Fragment() {
             filmsAdapter.addItems(it)
         })*/
 
-        scope = CoroutineScope(Dispatchers.IO).also { scope ->
-            scope.launch {
-                viewModel.filmsListData.collect {
-                    withContext(Dispatchers.Main) {
-                        filmsAdapter.addItems(it)
-                        filmsDataBase = it
-                    }
-                }
+        viewModel.filmsListData
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { list ->
+                filmsAdapter.addItems(list)
+                filmsDataBase = list
             }
-        }
+            .addTo(autoDisposable)
 
-        scope.launch {
-            for (element in viewModel.showProgressBar) {
-                launch(Dispatchers.Main) {
-                    binding.progressBar.isVisible = element
-                }
+        // получать данные о том, нужно нам показывать Прогресс бар или нет
+        viewModel.showProgressBar
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                binding.progressBar.isVisible = it
             }
-        }
 
     }
 
     private fun initSearchView() {
-        search_view.setOnClickListener {
-            search_view.isIconified = false
+        binding.searchView.setOnClickListener {
+            binding.searchView.isIconified = false
         }
 
         //Подключаем слушателя изменений введенного текста в поиска
-        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             //Этот метод отрабатывает при нажатии кнопки "поиск" на софт клавиатуре
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
@@ -124,7 +127,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyckler() {
-        main_recycler.apply {
+        binding.mainRecycler.apply {
             filmsAdapter =
                 FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
                     override fun click(film: Film) {
@@ -153,9 +156,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-        scope.cancel()
-    }
+
 
 }
