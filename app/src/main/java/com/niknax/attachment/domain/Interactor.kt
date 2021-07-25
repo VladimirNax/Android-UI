@@ -8,7 +8,7 @@ import com.niknax.attachment.data.Entity.TmdbResultsDto
 import com.niknax.attachment.data.MainRepository
 import com.niknax.attachment.data.PreferenceProvider
 import com.niknax.attachment.utils.Converter
-import com.niknax.attachment.viewmodel.HomeFragmentViewModel
+
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -51,6 +51,11 @@ class Interactor(
         })
     }
 
+    fun getSearchResultFromApi(search: String): Observable<List<Film>> = retrofitService.getFilmFromSearch(API.KEY, "ru-RU", search, 1)
+        .map {
+            Converter.convertApiListToDtoList(it.tmdbFilms)
+        }
+
     //Метод для сохранения настроек
     fun saveDefaultCategoryToPreferences(category: String) {
         preferences.saveDefaultCategory(category)
@@ -61,4 +66,6 @@ class Interactor(
 
     //Метод дергает метод репозитория MainRepository , чтобы тот забрал фильмы из БД
     fun getFilmsFromDB(): Observable<List<Film>> = repo.getAllFromDB()
+
+
 }
